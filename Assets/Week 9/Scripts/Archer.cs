@@ -11,7 +11,7 @@ public class Archer : Villager
     protected override void Attack(){
         base.Attack();
         destination = (Vector2)transform.position;
-        Instantiate(arrow, spawnPoint);
+        Instantiate(arrow, (Vector2)spawnPoint.position, Quaternion.identity);
     }
 
     public override ChestType CanOpen(){
