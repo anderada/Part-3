@@ -15,7 +15,7 @@ public class CharacterControl : MonoBehaviour
 
     void FixedUpdate(){
         if(SelectedVillager != null){
-            villagerDisplay.text = SelectedVillager.GetType().ToString();
+            villagerDisplay.text = SelectedVillager.ToString();
         }
         else {
             villagerDisplay.text = "None Selected";
