@@ -17,8 +17,8 @@ public class Growing : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(Triangle());
-        Circle();
+        StartCoroutine(Square());
+        StartCoroutine(Circle());
     }
 
     void Update()
@@ -40,13 +40,14 @@ public class Growing : MonoBehaviour
             yield return null;
         }
 
+        yield return new WaitForSeconds(1);
+        StartCoroutine(Triangle());
+
         running--;
     }
     IEnumerator Triangle()
     {
         running++;
-
-        yield return StartCoroutine(Square());
 
         float size = 0;
         while (size < 5)
@@ -60,23 +61,34 @@ public class Growing : MonoBehaviour
 
         running--;
     }
-    void Circle()
+    IEnumerator Circle()
     {
+        running++;
 
         float size = 0;
-        while (size < 5)
+        while (true)
         {
-            size += Time.deltaTime;
-            Vector3 scale = new Vector3(size, size, size);
-            circle.transform.localScale = scale;
-            circleTMP.text = "Cirlce: " + scale;
+            while (size < 5)
+            {
+                size += Time.deltaTime;
+                Vector3 scale = new Vector3(size, size, size);
+                circle.transform.localScale = scale;
+                circleTMP.text = "Cirlce: " + scale;
+                yield return null;
+            }
+            while (size > 0)
+            {
+                size -= Time.deltaTime;
+                Vector3 scale = new Vector3(size, size, size);
+                circle.transform.localScale = scale;
+                circleTMP.text = "Cirlce: " + scale;
+                yield return null;
+            }
         }
-        while (size > 0)
-        {
-            size -= Time.deltaTime;
-            Vector3 scale = new Vector3(size, size, size);
-            circle.transform.localScale = scale;
-            circleTMP.text = "Cirlce: " + scale;
-        }
+
+        yield return new WaitForSeconds(1);
+        StartCoroutine(Triangle());
+
+        running--;
     }
 }
