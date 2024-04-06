@@ -10,9 +10,11 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 2f;
     public float rotationSpeed = 20f;
     SpriteRenderer sr;
+    public static PlayerMovement player;
 
     private void Start()
     {
+        player = GetComponent<PlayerMovement>();
         sr = GetComponent<SpriteRenderer>();
         direction = Vector2.zero;
     }

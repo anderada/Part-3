@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    float speed = 5f;
-    public Color playerColor = Color.green;
+    float growSpeed = 5f;
+    public Color playerColor = Color.white;
 
-    public void init()
+    public virtual void init()
     {
         StartCoroutine(Spawn());
+        MazeManager.addMaze((int)(transform.position.x) + 3, (int)(transform.position.y) + 3);
     }
     public IEnumerator Spawn() {
         Vector3 scale = new Vector3(0,0,1);
         transform.localScale = scale;
         while (scale.x < 1)
         {
-            scale.x += Time.deltaTime * speed;
-            scale.y += Time.deltaTime * speed;
+            scale.x += Time.deltaTime * growSpeed;
+            scale.y += Time.deltaTime * growSpeed;
             transform.localScale = scale;
             yield return null;
         }
