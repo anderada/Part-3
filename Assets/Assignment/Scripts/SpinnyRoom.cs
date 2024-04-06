@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SpinnyRoom : Room
 {
-    public GameObject spinner;
-    private float spinSpeed = 100f;
+    public GameObject spinner;      //the spinny bit
+    private float spinSpeed = 100f; //the speed of the spinny bit
 
     override public void init() { 
-        base.init();
-        playerColor = Color.cyan;
+        base.init();    //play spawn animation, mark grid
+        playerColor = Color.cyan;   //set player color
     }
 
     private void FixedUpdate()
@@ -18,6 +18,7 @@ public class SpinnyRoom : Room
     }
 
     private void spin() {
+        //spin the spinny bit
         spinner.transform.Rotate(new Vector3(0,0,spinSpeed * Time.deltaTime));
     }
 }
