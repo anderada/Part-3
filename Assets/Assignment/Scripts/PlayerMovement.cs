@@ -33,4 +33,10 @@ public class PlayerMovement : MonoBehaviour
     public void SetCol(Color colour){
         sr.color = colour;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Room room = collision.GetComponentInParent<Room>();
+        SetCol(room.playerColor);
+    }
 }
