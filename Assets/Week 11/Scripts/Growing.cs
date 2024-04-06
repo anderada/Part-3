@@ -66,7 +66,7 @@ public class Growing : MonoBehaviour
         running++;
 
         float size = 0;
-        while (true)
+        while (size < 5)
         {
             while (size < 5)
             {
